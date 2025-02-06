@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: usermgt
+  name: usermgt
+  namespace: _{_NAMESPACE_}_
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: usermgt 
+  type: LoadBalancer

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: usermgt
+  name: usermgt
+  namespace: _{_NAMESPACE_}_
+spec:
+  replicas: _{_REPLICAS_}_
+  selector:
+    matchLabels:
+      app: usermgt
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: usermgt
+    spec:
+      containers:
+      - image: _{_IMAGE_}_
+        imagePullPolicy: Always
+        name: usermgt
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+      imagePullSecrets:
+      - name: acr-secret
